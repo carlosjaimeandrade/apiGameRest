@@ -4,5 +4,6 @@ const gameController = require("../../controllers/GameController")
 
 router.get("/games",gameController.games)
 router.get("/game/:id",gameController.game)
+router.post("/game/",gameController.newGame)
 
 module.exports = router

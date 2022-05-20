@@ -1,5 +1,5 @@
 //simulando banco
-const DB = {
+let DB = {
     games: [
         {
             id: 1,
@@ -47,8 +47,22 @@ const game = (req, res)=>{
     res.json(game)
 }
 
+const newGame = (req, res)=>{
+    const {id, title, year, price} = req.body
+
+    if(id === undefined || isNaN(id)) return res.sendStatus(400) 
+    if(title === undefined) return res.sendStatus(400)
+    if(year === undefined  || isNaN(year)) return res.sendStatus(400)
+    if(price === undefined  || isNaN(price)) return  res.sendStatus(400)
+
+   
+    DB.games.push({id, title, year, price}) 
+    res.sendStatus(200)
+
+}
 
 module.exports = {
     games,
-    game
+    game,
+    newGame
 }
