@@ -10,3 +10,4 @@ Errado -> (method: get) site.com/listagem/game/1   correto -> (method: get) site
 * delete - deletar dados 
 * put - atualizar dado por completo, exemplo tabela user, com 3 colunas, atualizar as 3 colunas ou atualizar 1 dado da coluna enviando os 3 dados na requisição
 * patch - atualizar dado parcial, exemplo tabela user, com 3 colunas, atualizar apenas as 2 colunas ou 1 coluna 
+4 - Não pode renderizar view(html, css, outros) deve ser apenas servidor, não pode ser cliente e servidor ao mesmo tempo
