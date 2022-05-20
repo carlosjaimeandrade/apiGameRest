@@ -1,0 +1,12 @@
+Api rest
+1 - Preciso retornar o status da requisição HTTP, lista de status em https://pt.wikipedia.org/wiki/Lista_de_c%C3%B3digos_de_estado_HTTP
+2 - Preciso ter um end point com os verbos HTTP
+Não pode ser informado o verbo na url exemplos: 
+Errado -> (method: delete) site.com/delete/game/1  correto -> (method: delete) site.com/game/1 
+Errado -> (method: get) site.com/listagem/game/1   correto -> (method: get) site.com/game/1 
+3 - Verbos HTTP
+* post - envio de dados 
+* get - listagem de dados 
+* delete - deletar dados 
+* put - atualizar dado por completo, exemplo tabela user, com 3 colunas, atualizar as 3 colunas ou atualizar 1 dado da coluna enviando os 3 dados na requisição
+* patch - atualizar dado parcial, exemplo tabela user, com 3 colunas, atualizar apenas as 2 colunas ou 1 coluna 
