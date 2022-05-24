@@ -63,8 +63,8 @@ const newGame = (req, res)=>{
 }
 
 const destroy = (req,res) => {
-    const id = req.body.id
-
+    const id = req.params.id
+    console.log(id)
     if(id === undefined || isNaN(id)) return res.sendStatus(400) 
 
     const index = DB.games.findIndex(g => g.id == id)
