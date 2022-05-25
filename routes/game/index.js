@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const gameController = require("../../controllers/GameController")
 
+router.post("/auth",gameController.auth)
+
 router.get("/games",gameController.games)
 router.get("/game/:id",gameController.game)
 router.post("/game",gameController.newGame)

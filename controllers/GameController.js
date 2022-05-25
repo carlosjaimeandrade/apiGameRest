@@ -1,4 +1,8 @@
 //simulando banco
+const jwt = require("jsonwebtoken");
+
+const JWTsecret = "PKSAPADJfousapokaposiak090ak0-12kpasodi2ik1=9-"
+
 let DB = {
     games: [
         {
@@ -19,6 +23,20 @@ let DB = {
             year: 2012,
             price: 30
         },
+    ],
+    users:[
+        {
+            id: 1,
+            name: "Calors Jaime",
+            email: "jaime_andrek@hotmail.com",
+            password: "123"
+        },
+        {
+            id: 2,
+            name: "Antonio",
+            email: "antonio@hotmail.com",
+            password: "123"
+        }
     ]
 }
 
@@ -131,11 +149,50 @@ const updateParcial = (req,res) => {
     res.sendStatus(200)
 }
 
+const auth = (req,res)=>{
+    const {email, password} = req.body
+
+    if(email == undefined){
+        res.status(400)
+        res.json({err: "O e-mail é inválido"})
+        return
+    }
+
+    const user = DB.users.find(user => user.email === email)
+
+    if(user == undefined){
+        res.status(404)
+        res.json({err: "Não foi encontrado o usuário"})
+        return
+    }
+
+    if(user.password == password){
+
+        jwt.sign({id: user.id, email: user.email}, JWTsecret,{ expiresIn: '48h'},(err, token)=>{
+            if(err){
+                res.status(400);
+                res.json({err: "Falha interna"})
+                return
+            }
+
+            res.status(200);
+            res.json({token: token})
+
+        })
+    }else{
+        res.status(401)
+        res.json({err: "Não autorizado"})
+    }
+
+
+}
+
 module.exports = {
     games,
     game,
     newGame,
     destroy,
     update,
-    updateParcial
+    updateParcial,
+    auth
 }
